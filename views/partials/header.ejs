@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service Center</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="/" class="logo">🚗 AutoCare </a>
+            <div class="nav-links">
+                <a href="/customers" class="nav-link">ลูกค้า</a>
+                <a href="/cars" class="nav-link">รถยนต์</a>
+                <a href="/mechanics" class="nav-link">ช่างซ่อม</a>
+                <a href="/service-items" class="nav-link">รายการบริการ</a>
+                <a href="/service-records" class="nav-link">บันทึกการซ่อม</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="padding-top: 2rem;">
+        <% if (success && success.length> 0) { %>
+            <div class="alert alert-success">
+                <%= success %>
+            </div>
+            <% } %>
+                <% if (error && error.length> 0) { %>
+                    <div class="alert alert-error">
+                        <%= error %>
+                    </div>
+                    <% } %>

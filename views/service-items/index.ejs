@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+    <div class="card">
+        <div class="card-header">
+            <h2>รายการบริการมาตรฐาน</h2>
+            <a href="/service-items/new" class="btn btn-primary">➕ เพิ่มรายการบริการ</a>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ชื่อรายการ</th>
+                        <th>ราคามาตรฐาน</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% items.forEach(item=> { %>
+                        <tr>
+                            <td>
+                                <%= item.itemName %>
+                            </td>
+                            <td>
+                                <%= item.price %>
+                            </td>
+                            <td>
+                                <a href="/service-items/<%= item.id %>/edit" class="btn btn-sm btn-primary">แก้ไข</a>
+                                <form action="/service-items/<%= item.id %>?_method=DELETE" method="POST"
+                                    style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger">ลบ</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

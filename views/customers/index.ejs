@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+    <div class="card">
+        <div class="card-header">
+            <h2>รายชื่อลูกค้า</h2>
+            <a href="/customers/new" class="btn btn-primary">➕ เพิ่มลูกค้าใหม่</a>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>เบอร์โทรศัพท์</th>
+                        <th>อีเมล</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% customers.forEach(customer=> { %>
+                        <tr>
+                            <td>
+                                <%= customer.fullName %>
+                            </td>
+                            <td>
+                                <%= customer.phone %>
+                            </td>
+                            <td>
+                                <%= customer.email %>
+                            </td>
+                            <td>
+                                <a href="/customers/<%= customer.id %>/edit" class="btn btn-sm btn-primary">แก้ไข</a>
+                                <form action="/customers/<%= customer.id %>?_method=DELETE" method="POST"
+                                    style="display:inline;" onsubmit="return confirm('ยืนยันการลบข้อมูลลูกค้า?')">
+                                    <button type="submit" class="btn btn-sm btn-danger">ลบ</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

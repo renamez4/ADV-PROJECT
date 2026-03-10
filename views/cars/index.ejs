@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+    <div class="card">
+        <div class="card-header">
+            <h2>รายชื่อรถยนต์</h2>
+            <a href="/cars/new" class="btn btn-primary">➕ เพิ่มรถใหม่</a>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ทะเบียนรถ</th>
+                        <th>ยี่ห้อ/รุ่น</th>
+                        <th>เจ้าของ</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cars.forEach(car=> { %>
+                        <tr>
+                            <td><strong>
+                                    <%= car.plateNumber %>
+                                </strong></td>
+                            <td>
+                                <%= car.brand %>
+                                    <%= car.model %>
+                            </td>
+                            <td>
+                                <%= car.Customer ? car.Customer.fullName : 'ไม่ระบุ' %>
+                            </td>
+                            <td>
+                                <a href="/cars/<%= car.id %>/edit" class="btn btn-sm btn-primary">แก้ไข</a>
+                                <form action="/cars/<%= car.id %>?_method=DELETE" method="POST" style="display:inline;"
+                                    onsubmit="return confirm('ยืนยันการลบข้อมูลรถยนต์?')">
+                                    <button type="submit" class="btn btn-sm btn-danger">ลบ</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

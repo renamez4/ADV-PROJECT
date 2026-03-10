@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+    <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">ภาพรวมศูนย์บริการ</h1>
+    <p style="color: var(--secondary);">ยินดีต้อนรับกลับมา! นี่คือสรุปสถิติปัจจุบันของศูนย์บริการคุณ</p>
+
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <span class="stat-label">ลูกค้าทั้งหมด</span>
+            <span class="stat-value">
+                <%= customerCount %>
+            </span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">รถในระบบ</span>
+            <span class="stat-value">
+                <%= carCount %>
+            </span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">การซ่อมทั้งหมด</span>
+            <span class="stat-value">
+                <%= serviceCount %>
+            </span>
+        </div>
+        <div class="stat-card" style="border-left: 4px solid var(--success);">
+            <span class="stat-label">รายได้รวม (บาท)</span>
+            <span class="stat-value" style="color: var(--success);">
+                <%= revenue %>
+            </span>
+        </div>
+    </div>
+
+    <div class="card"
+        style="margin-top: 3rem; background: var(--primary); color: white; padding: 3rem; text-align: center;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">พร้อมทำรายการซ่อมใหม่หรือยัง?</h2>
+        <a href="/service-records/new" class="btn"
+            style="background: white; color: var(--primary); padding: 1rem 2rem; font-size: 1.1rem;">
+            ➕ เปิดใบแจ้งซ่อมใหม่
+        </a>
+    </div>
+
+    <%- include('partials/footer') %>

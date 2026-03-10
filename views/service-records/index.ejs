@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+    <div class="card">
+        <div class="card-header">
+            <h2>ประวัติการรับบริการ</h2>
+            <a href="/service-records/new" class="btn btn-primary">➕ เปิดใบแจ้งซ่อมใหม่</a>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>รถยนต์ (ทะเบียน)</th>
+                        <th>ช่างผู้ดูแล</th>
+                        <th>คำอธิบาย</th>
+                        <th>ค่าใช้จ่ายรวม</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% records.forEach(record=> { %>
+                        <tr>
+                            <td>
+                                <%= record.serviceDate %>
+                            </td>
+                            <td><strong>
+                                    <%= record.Car ? record.Car.plateNumber : 'N/A' %>
+                                </strong></td>
+                            <td>
+                                <%= record.Mechanic ? record.Mechanic.mechanicName : 'N/A' %>
+                            </td>
+                            <td>
+                                <%= record.description %>
+                            </td>
+                            <td style="color: var(--success); font-weight: 700;">
+                                <%= record.totalCost %>
+                            </td>
+                            <td>
+                                <a href="/service-records/<%= record.id %>"
+                                    class="btn btn-sm btn-primary">ดูรายละเอียด</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

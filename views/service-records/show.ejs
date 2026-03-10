@@ -1,0 +1,83 @@
+<%- include('../partials/header') %>
+    <div class="card" style="max-width: 800px; margin: 2rem auto;">
+        <div class="card-header" style="background: var(--primary); color: white;">
+            <h2>รายละเอียดการรับบริการ #<%= record.id %>
+            </h2>
+            <span class="btn btn-sm" style="background: white; color: var(--primary);">
+                <%= record.serviceDate %>
+            </span>
+        </div>
+        <div style="padding: 2rem;">
+            <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; margin: 0 0 2rem 0;">
+                <div>
+                    <h4 style="color: var(--secondary); text-transform: uppercase; font-size: 0.8rem;">ข้อมูลรถยนต์</h4>
+                    <p style="font-size: 1.2rem; font-weight: 700;">
+                        <%= record.Car.plateNumber %>
+                    </p>
+                    <p>
+                        <%= record.Car.brand %>
+                            <%= record.Car.model %>
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); text-transform: uppercase; font-size: 0.8rem;">ช่างผู้ดูแล</h4>
+                    <p style="font-size: 1.2rem; font-weight: 700;">
+                        <%= record.Mechanic.mechanicName %>
+                    </p>
+                    <p>ระดับ: <%= record.Mechanic.skillLevel %>
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--secondary); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem;">
+                    รายการบริการที่ได้รับ</h4>
+                <table style="background: #f8fafc; border-radius: 8px;">
+                    <thead>
+                        <tr>
+                            <th>ชื่อรายการ</th>
+                            <th style="text-align: right;">ราคา (บาท)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% record.ServiceItems.forEach(item=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.itemName %>
+                                </td>
+                                <td style="text-align: right;">
+                                    <%= item.ServiceDetail.unitPrice %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                    <tfoot>
+                        <tr style="border-top: 2px solid var(--border);">
+                            <td style="font-weight: 800; padding-top: 1.5rem;">ยอดรวมสุทธิ</td>
+                            <td
+                                style="text-align: right; font-size: 1.5rem; font-weight: 800; color: var(--success); padding-top: 1.5rem;">
+                                <%= record.totalCost %>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <% if (record.description) { %>
+                <div
+                    style="padding: 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4 style="color: #92400e; font-size: 0.9rem; margin-bottom: 0.5rem;">หมายเหตุเพิ่มเติม:</h4>
+                    <p>
+                        <%= record.description %>
+                    </p>
+                </div>
+                <% } %>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="/service-records" class="btn" style="background: var(--secondary); color: white;">⬅
+                            กลับไปหน้ารายการ</a>
+                        <button onclick="window.print()" class="btn btn-primary">🖨 พิมพ์บิล/ใบเสร็จ</button>
+                    </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
