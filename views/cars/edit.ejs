@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+    <div class="card" style="max-width: 600px; margin: 2rem auto;">
+        <div class="card-header">
+            <h2>แก้ไขข้อมูลรถยนต์</h2>
+        </div>
+        <div style="padding: 1.5rem;">
+            <form action="/cars/<%= car.id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label>เลขทะเบียนรถ</label>
+                    <input type="text" name="plateNumber" value="<%= car.plateNumber %>" required
+                        placeholder="เช่น กข 1234">
+                </div>
+                <div class="form-group">
+                    <label>ยี่ห้อรถ</label>
+                    <input type="text" name="brand" value="<%= car.brand %>" required placeholder="เช่น Toyota">
+                </div>
+                <div class="form-group">
+                    <label>รุ่นรถ</label>
+                    <input type="text" name="model" value="<%= car.model %>" required placeholder="เช่น Camry">
+                </div>
+                <div class="form-group">
+                    <label>เจ้าของรถ</label>
+                    <select name="customerId" required>
+                        <% customers.forEach(customer=> { %>
+                            <option value="<%= customer.id %>" <%=customer.id===car.customerId ? 'selected' : '' %>>
+                                <%= customer.fullName %> (<%= customer.phone %>)
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">บันทึกการแก้ไข</button>
+                    <a href="/cars" class="btn" style="background: var(--secondary); color: white;">ยกเลิก</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

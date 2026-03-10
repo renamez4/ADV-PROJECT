@@ -42,16 +42,26 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         await db.Car.update(req.body, { where: { id: req.params.id } });
+        req.flash('success', 'แก้ไขข้อมูลรถเรียบร้อยแล้ว');
         res.redirect('/cars');
     } catch (error) {
-        res.redirect('/cars');
+        console.error(error);
+        req.flash('error', 'เกิดข้อผิดพลาดในการแก้ไขข้อมูลรถ');
+        res.redirect(`/cars/${req.params.id}/edit`);
     }
 });
 
 // 6. ระบบลบข้อมูลรถ
 router.delete('/:id', async (req, res) => {
-    await db.Car.destroy({ where: { id: req.params.id } });
-    res.redirect('/cars');
+    try {
+        await db.Car.destroy({ where: { id: req.params.id } });
+        req.flash('success', 'ลบข้อมูลรถเรียบร้อยแล้ว');
+        res.redirect('/cars');
+    } catch (error) {
+        console.error(error);
+        req.flash('error', 'ไม่สามารถลบข้อมูลรถได้');
+        res.redirect('/cars');
+    }
 });
 
 module.exports = router;

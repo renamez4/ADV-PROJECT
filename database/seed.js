@@ -5,26 +5,26 @@ async function seed() {
         await db.sequelize.sync({ force: true });
         console.log('Database synced successfully.');
 
-        // Seed Customers
+
         const customers = await db.Customer.bulkCreate([
             { fullName: 'สมชาย รักรถ', phone: '0812345678', email: 'somchai@email.com' },
             { fullName: 'สมหญิง จริงใจ', phone: '0898765432', email: 'somying@email.com' }
         ]);
 
-        // Seed Cars
+
         const cars = await db.Car.bulkCreate([
             { plateNumber: 'กข 1234', brand: 'Toyota', model: 'Camry', customerId: customers[0].id },
             { plateNumber: 'ชญ 5678', brand: 'Honda', model: 'Civic', customerId: customers[0].id },
             { plateNumber: 'บบ 9999', brand: 'Mazda', model: 'Mazda 3', customerId: customers[1].id }
         ]);
 
-        // Seed Mechanics
+
         const mechanics = await db.Mechanic.bulkCreate([
             { mechanicName: 'ช่างเก่ง ดีเยี่ยม', skillLevel: 'Senior', phone: '0855555555' },
             { mechanicName: 'ช่างฟ้า รวดเร็ว', skillLevel: 'Intermediate', phone: '0844444444' }
         ]);
 
-        // Seed Service Items
+
         const serviceItems = await db.ServiceItem.bulkCreate([
             { itemName: 'เปลี่ยนน้ำมันเครื่อง', price: 1500.00 },
             { itemName: 'เช็คระยะ 20,000 กม.', price: 2500.00 },
@@ -32,7 +32,7 @@ async function seed() {
             { itemName: 'ตั้งศูนย์ถ่วงล้อ', price: 800.00 }
         ]);
 
-        // Seed Service Record 1
+
         const record1 = await db.ServiceRecord.create({
             serviceDate: new Date(),
             description: 'ตรวจเช็คระยะปกติ',
@@ -46,7 +46,7 @@ async function seed() {
             unitPrice: serviceItems[0].price
         });
 
-        // Seed Service Record 2
+
         const record2 = await db.ServiceRecord.create({
             serviceDate: new Date(),
             description: 'เปลี่ยนเบรคและตั้งศูนย์',
