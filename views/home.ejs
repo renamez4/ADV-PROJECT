@@ -1,40 +1,32 @@
 <%- include('partials/header') %>
 
-    <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">ภาพรวมศูนย์บริการ</h1>
-    <p style="color: var(--secondary);">ยินดีต้อนรับกลับมา! นี่คือสรุปสถิติปัจจุบันของศูนย์บริการคุณ</p>
+    <header class="page-header">
+        <h1>ภาพรวมศูนย์บริการ</h1>
+        <p>ยินดีต้อนรับกลับมา! นี่คือสรุปสถิติปัจจุบันของศูนย์บริการคุณ</p>
+    </header>
 
     <div class="dashboard-grid">
         <div class="stat-card">
             <span class="stat-label">ลูกค้าทั้งหมด</span>
-            <span class="stat-value">
-                <%= customerCount %>
-            </span>
+            <span class="stat-value"><%= customerCount %></span>
         </div>
         <div class="stat-card">
             <span class="stat-label">รถในระบบ</span>
-            <span class="stat-value">
-                <%= carCount %>
-            </span>
+            <span class="stat-value"><%= carCount %></span>
         </div>
         <div class="stat-card">
             <span class="stat-label">การซ่อมทั้งหมด</span>
-            <span class="stat-value">
-                <%= serviceCount %>
-            </span>
+            <span class="stat-value"><%= serviceCount %></span>
         </div>
-        <div class="stat-card" style="border-left: 4px solid var(--success);">
+        <div class="stat-card" style="border-left-color: var(--success);">
             <span class="stat-label">รายได้รวม (บาท)</span>
-            <span class="stat-value" style="color: var(--success);">
-                <%= revenue %>
-            </span>
+            <span class="stat-value" style="color: var(--success);"><%= revenue %></span>
         </div>
     </div>
 
-    <div class="card"
-        style="margin-top: 3rem; background: var(--primary); color: white; padding: 3rem; text-align: center;">
-        <h2 style="font-size: 2rem; margin-bottom: 1rem;">พร้อมทำรายการซ่อมใหม่หรือยัง?</h2>
-        <a href="/service-records/new" class="btn"
-            style="background: white; color: var(--primary); padding: 1rem 2rem; font-size: 1.1rem;">
+    <div class="card" style="margin-top: 3rem; background: var(--primary); color: white; padding: 3rem; text-align: center; border: none;">
+        <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: white;">พร้อมทำรายการซ่อมใหม่หรือยัง?</h2>
+        <a href="/service-records/new" class="btn" style="background: white; color: var(--primary); padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
             ➕ เปิดใบแจ้งซ่อมใหม่
         </a>
     </div>

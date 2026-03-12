@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
     <div class="card">
         <div class="card-header">
-            <h2>รายชื่อลูกค้า</h2>
+            <h2 style="margin: 0;">รายชื่อลูกค้า</h2>
             <a href="/customers/new" class="btn btn-primary">➕ เพิ่มลูกค้าใหม่</a>
         </div>
         <div class="table-container">
@@ -17,15 +17,9 @@
                 <tbody>
                     <% customers.forEach(customer=> { %>
                         <tr>
-                            <td>
-                                <%= customer.fullName %>
-                            </td>
-                            <td>
-                                <%= customer.phone %>
-                            </td>
-                            <td>
-                                <%= customer.email %>
-                            </td>
+                            <td><strong><%= customer.fullName %></strong></td>
+                            <td><%= customer.phone %></td>
+                            <td><%= customer.email %></td>
                             <td>
                                 <a href="/customers/<%= customer.id %>/edit" class="btn btn-sm btn-primary">แก้ไข</a>
                                 <form action="/customers/<%= customer.id %>?_method=DELETE" method="POST"
